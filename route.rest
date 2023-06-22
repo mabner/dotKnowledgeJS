@@ -4,3 +4,15 @@ GET http://localhost:3000/articles
 
 GET http://localhost:3000/articles/2
 
+###
+
+POST http://localhost:3000/articles
+Content-Type: application/json
+
+{
+	"title": "SQL For Testing Recipts",
+	"content": "Here goes a long SQL script...",
+	"category": "SQL",
+	"isActive": true
+}
+
