@@ -15,23 +15,5 @@ const categorySchema = new mongoose.Schema({
 	articleCount: {
 		type: Number,
 	},
-})
-module.exports = mongoose.model("category", categorySchema)
-
-
-const articleSchema = new mongoose.Schema({
-	title: {},
-	content: {},
-	category: {
-		type: String,
-	},
-	authorId: {},
-	createdAt: {
-		type: Date,
-		default: Date.now,
-	},
-	updatedAt: {},
-	views: {},
-	isActive: {}
-})
-module.exports = mongoose.model("articles", articleSchema)
+});
+module.exports = mongoose.model('Category', categorySchema);
