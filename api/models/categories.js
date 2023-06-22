@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const categorySchema = new mongoose.Schema({
 	name: {
 		type: String,
-		required: true,
+		default: 'Category',
 	},
 	category: {
 		type: mongoose.Types.ObjectId,
@@ -14,6 +14,7 @@ const categorySchema = new mongoose.Schema({
 	},
 	articleCount: {
 		type: Number,
+		default: 0,
 	},
 });
 module.exports = mongoose.model('Category', categorySchema);
