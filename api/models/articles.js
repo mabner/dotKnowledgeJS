@@ -3,13 +3,11 @@ const mongoose = require('mongoose');
 const articleSchema = new mongoose.Schema({
 	title: {
 		type: String,
-		required: true,
 		default: 'Title',
 	},
 	content: {
 		type: String,
-		require: true,
-		default: 'Article content',
+		default: 'Content',
 	},
 	category: {
 		type: String,
@@ -27,11 +25,12 @@ const articleSchema = new mongoose.Schema({
 	},
 	views: {
 		type: Number,
+		default: 0,
 	},
 	isActive: {
 		Type: Boolean,
-		required: true,
 	},
 });
 module.exports = mongoose.model('Articles', articleSchema);
+
 
