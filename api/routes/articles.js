@@ -34,6 +34,18 @@ router.post('/', async (req, res) => {
 
 router.patch('/:id', (req, res) => {});
 
-router.delete('/:id', (req, res) => {});
+async function getArticle(req, res, next) {
+	let article
+	try {
+		article = await Articles.findById(req.params.id)
+		if (article == null) {
+			return res.status(404).json({ message: 'Article not found' })
+		}
+	} catch (error) {
+		return res.status(500).json({ message: error.message })
+	}
+	res.article = article;
+	next();
+}
 
 module.exports = router;
