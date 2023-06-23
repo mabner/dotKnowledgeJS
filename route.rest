@@ -2,7 +2,7 @@ GET http://localhost:3000/articles
 
 ###
 
-GET http://localhost:3000/articles/2
+GET http://localhost:3000/articles/6493c44e049cac26d2fcadaf
 
 ###
 
@@ -14,5 +14,18 @@ Content-Type: application/json
 	"content": "Here goes a long SQL script...",
 	"category": "SQL",
 	"isActive": true
+}
+
+###
+
+DELETE http://localhost:3000/articles/6493c44e049cac26d2fcadaf
+
+###
+
+PATCH http://localhost:3000/articles/64950f511769925de340a4f3
+Content-Type: application/json
+
+{
+	"title": "SQL Testing Codes"
 }
 

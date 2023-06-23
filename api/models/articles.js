@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// TODO: Add 'required' parameter
 const articleSchema = new mongoose.Schema({
 	title: {
 		type: String,

@@ -11,8 +11,8 @@ router.get('/', async (req, res) => {
 	}
 });
 
-router.get('/:id', (req, res) => {
-	res.send(req.params.id);
+router.get('/:id', getArticle, (req, res) => {
+	res.json(res.article);
 });
 
 router.post('/', async (req, res) => {
@@ -32,7 +32,30 @@ router.post('/', async (req, res) => {
 	}
 });
 
-router.patch('/:id', (req, res) => {});
+router.patch('/:id', getArticle, async (req, res) => {
+	if (req.body.title != null) {
+		res.article.title = req.body.title;
+	}
+	if (req.body.content != null) {
+		res.article.content = req.body.content;
+	}
+	res.article.updatedAt = Date.now();
+	try {
+		const updatedArticle = await res.article.save();
+		res.json(updatedArticle)
+	} catch (error) {
+		res.status(400).json({ message: error.message });
+	}
+});
+
+router.delete('/:id', getArticle, async (req, res) => {
+	try {
+		await res.article.deleteOne()
+		res.json({ message: 'Article deleted' });
+	} catch (error) {
+		res.status(500).json({ message: error.message })
+	}
+});
 
 async function getArticle(req, res, next) {
 	let article
