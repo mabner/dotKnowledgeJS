@@ -4,18 +4,20 @@
   "description": ".Knowledge backend using Node.js, Express and MongoDB.",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "swagger-gen": "node swagger.js"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.2",
     "mongoose": "^7.3.0",
-    "swagger-jsdoc": "^6.2.8",
+    "swagger-autogen": "^2.23.3",
     "swagger-ui-express": "^4.6.3"
   },
   "devDependencies": {
     "dotenv": "^16.3.1",
-    "nodemon": "^2.0.22"
+    "nodemon": "^1.14.9"
   }
 }
