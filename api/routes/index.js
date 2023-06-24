@@ -1,13 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
+const articlesRouter = require('./articles');
+const categoriesRoutes = require('./categories');
 
-// router.get('/', async (req, res) => {
-// 	try {
-// 		res.redirect('/');
-// 	} catch (error) {
-// 		res.status(500).json({ message: error.message });
-// 	}
-// });
+router.use('/articles', articlesRouter);
+router.use('/categories', categoriesRoutes);
 
 module.exports = router;

@@ -1,7 +1,7 @@
 const swaggerAutogen = require('swagger-autogen')();
 
 const outputFile = './swagger.json';
-const endpointsFiles = ['./api/routes/articles.js'];
+const endpointsFiles = ['./api/routes/index.js'];
 
 const doc = {
 	info: {
@@ -27,18 +27,6 @@ const doc = {
 			url: 'http://localhost:3000',
 		},
 	],
-	definitions: {
-		Article: {
-			title: 'SQL Instructions',
-			content: 'select * from table',
-			category: 'SQL',
-			authorId: 1,
-			views: 2,
-			isActive: true,
-			createdAt: '2023-06-23',
-			updatedAt: '2023-06-24',
-		},
-	},
 };
 
 swaggerAutogen(outputFile, endpointsFiles, doc);
