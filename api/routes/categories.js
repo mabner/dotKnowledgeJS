@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const Categories = require('../models/articles');
+const Categories = require('../models/categories');
 
 router.get('/', async (req, res) => {
+	// #swagger.tags = ['Categories']
 	try {
 		const categories = await Categories.find();
 		res.json(categories);
@@ -12,10 +13,12 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', getCategory, (req, res) => {
+	// #swagger.tags = ['Categories']
 	res.json(res.category);
 });
 
 router.post('/', async (req, res) => {
+	// #swagger.tags = ['Categories']
 	const categories = new Categories({
 		name: req.body.name,
 		parentId: req.body.parentId,
@@ -31,6 +34,7 @@ router.post('/', async (req, res) => {
 });
 
 router.patch('/:id', getCategory, async (req, res) => {
+	// #swagger.tags = ['Categories']
 	if (req.body.name != null) {
 		res.category.name = req.body.name;
 	}
@@ -44,6 +48,7 @@ router.patch('/:id', getCategory, async (req, res) => {
 });
 
 router.delete('/:id', getCategory, async (req, res) => {
+	// #swagger.tags = ['Categories']
 	try {
 		await res.category.deleteOne();
 		res.json({ message: 'Category deleted' });
