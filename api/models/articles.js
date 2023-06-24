@@ -1,37 +1,62 @@
 const mongoose = require('mongoose');
 
-// TODO: Add 'required' parameter
-const articleSchema = new mongoose.Schema({
-	title: {
-		type: String,
-		default: 'Title',
+const categorySchema = new mongoose.Schema(
+	{
+		name: {
+			type: String,
+			default: 'Category Name',
+			trim: true,
+		},
+		category: {
+			type: mongoose.Types.ObjectId,
+			ref: 'articles',
+		},
+		parentId: {
+			type: String,
+		},
+		articleCount: {
+			type: Number,
+			default: 0,
+		},
 	},
-	content: {
-		type: String,
-		default: 'Content',
+	{
+		timestamps: true,
 	},
-	category: {
-		type: String,
-	},
-	authorId: {
-		type: Number,
-	},
-	createdAt: {
-		type: Date,
-		default: Date.now,
-	},
-	updatedAt: {
-		type: Date,
-		default: Date.now,
-	},
-	views: {
-		type: Number,
-		default: 0,
-	},
-	isActive: {
-		Type: Boolean,
-	},
-});
-module.exports = mongoose.model('Articles', articleSchema);
+);
+const Category = mongoose.model('Category', categorySchema);
+module.exports = Category;
 
-
+const articleSchema = new mongoose.Schema(
+	{
+		title: {
+			type: String,
+			default: 'Title',
+			required: [true, 'Title is a required field.'],
+			trim: true,
+		},
+		content: {
+			type: String,
+			default: 'Content',
+			required: [true, 'Content is a required field.'],
+			trim: true,
+		},
+		category: {
+			type: String,
+		},
+		authorId: {
+			type: Number,
+		},
+		views: {
+			type: Number,
+			default: 0,
+		},
+		isActive: {
+			Type: Boolean,
+		},
+	},
+	{
+		timestamps: true,
+	},
+);
+const Articles = mongoose.model('Articles', articleSchema);
+module.exports = Articles;
