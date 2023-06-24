@@ -23,7 +23,7 @@ const categorySchema = new mongoose.Schema(
 		timestamps: true,
 	},
 );
-const Category = mongoose.model('Category', categorySchema);
+const Category = mongoose.model('category', categorySchema);
 module.exports = Category;
 
 const articleSchema = new mongoose.Schema(
@@ -58,5 +58,5 @@ const articleSchema = new mongoose.Schema(
 		timestamps: true,
 	},
 );
-const Articles = mongoose.model('Articles', articleSchema);
+const Articles = mongoose.model('articles', articleSchema);
 module.exports = Articles;
