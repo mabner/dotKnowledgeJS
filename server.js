@@ -16,3 +16,5 @@ app.use(router);
 app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.listen(port, () => console.log(`Server listening on port ${port}`));
+
+module.exports = app;

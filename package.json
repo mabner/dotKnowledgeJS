@@ -2,7 +2,7 @@
   "name": "dotknowledgejs",
   "version": "1.0.0",
   "description": ".Knowledge backend using Node.js, Express and MongoDB.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
     "swagger-gen": "node swagger.js"
