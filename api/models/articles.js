@@ -23,8 +23,8 @@ const categorySchema = new mongoose.Schema(
 		timestamps: true,
 	},
 );
-const Category = mongoose.model('category', categorySchema);
-module.exports = Category;
+const Categories = mongoose.model('categories', categorySchema);
+module.exports = Categories;
 
 const articleSchema = new mongoose.Schema(
 	{

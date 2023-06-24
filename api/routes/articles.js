@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const Articles = require('../models/articles');
+//
+// TODO: Check updatedAt functionality.
+//
 
 router.get('/', async (req, res) => {
 	try {
@@ -20,7 +23,7 @@ router.post('/', async (req, res) => {
 		title: req.body.title,
 		content: req.body.content,
 		category: req.body.category,
-		updatedAt: Date.now(),
+		//updatedAt: Date.now(),
 		isActive: req.body.isActive,
 	});
 
@@ -39,10 +42,10 @@ router.patch('/:id', getArticle, async (req, res) => {
 	if (req.body.content != null) {
 		res.article.content = req.body.content;
 	}
-	res.article.updatedAt = Date.now();
+	//res.article.updatedAt = Date.now();
 	try {
 		const updatedArticle = await res.article.save();
-		res.json(updatedArticle)
+		res.json(updatedArticle);
 	} catch (error) {
 		res.status(400).json({ message: error.message });
 	}
