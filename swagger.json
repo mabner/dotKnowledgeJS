@@ -219,7 +219,7 @@
         ],
         "responses": {
           "201": {
-            "description": "Created"
+            "description": "Category created with success"
           },
           "400": {
             "description": "Bad Request"
