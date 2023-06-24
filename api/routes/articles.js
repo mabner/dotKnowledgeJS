@@ -6,7 +6,7 @@ const Articles = require('../models/articles');
 //
 
 router.get('/', async (req, res) => {
-	// #swagger.tags = ['Article']
+	// #swagger.tags = ['Articles']
 	try {
 		const articles = await Articles.find();
 		res.json(articles);
@@ -17,14 +17,14 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', getArticle, (req, res) => {
-	// #swagger.tags = ['Article']
+	// #swagger.tags = ['Articles']
 	// #swagger.description = 'Get an specific articles by ID'
 	// #swagger.parameters['id'] = { description: 'Article ID' }
 	res.json(res.article);
 });
 
 router.post('/', async (req, res) => {
-	// #swagger.tags = ['Article']
+	// #swagger.tags = ['Articles']
 	const articles = new Articles({
 		title: req.body.title,
 		content: req.body.content,
@@ -44,7 +44,7 @@ router.post('/', async (req, res) => {
 });
 
 router.patch('/:id', getArticle, async (req, res) => {
-	// #swagger.tags = ['Article']
+	// #swagger.tags = ['Articles']
 	if (req.body.title != null) {
 		res.article.title = req.body.title;
 	}
@@ -62,7 +62,7 @@ router.patch('/:id', getArticle, async (req, res) => {
 });
 
 router.delete('/:id', getArticle, async (req, res) => {
-	// #swagger.tags = ['Article']
+	// #swagger.tags = ['Articles']
 	try {
 		await res.article.deleteOne();
 		res.json({ message: 'Article deleted' });

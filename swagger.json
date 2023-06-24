@@ -31,10 +31,10 @@
     "application/json"
   ],
   "paths": {
-    "/": {
+    "/articles/": {
       "get": {
         "tags": [
-          "Article"
+          "Articles"
         ],
         "description": "",
         "responses": {
@@ -48,7 +48,7 @@
       },
       "post": {
         "tags": [
-          "Article"
+          "Articles"
         ],
         "description": "",
         "parameters": [
@@ -84,10 +84,10 @@
         }
       }
     },
-    "/{id}": {
+    "/articles/{id}": {
       "get": {
         "tags": [
-          "Article"
+          "Articles"
         ],
         "description": "Get an specific articles by ID",
         "parameters": [
@@ -113,7 +113,7 @@
       },
       "patch": {
         "tags": [
-          "Article"
+          "Articles"
         ],
         "description": "",
         "parameters": [
@@ -156,7 +156,7 @@
       },
       "delete": {
         "tags": [
-          "Article"
+          "Articles"
         ],
         "description": "",
         "parameters": [
@@ -179,43 +179,143 @@
           }
         }
       }
-    }
-  },
-  "definitions": {
-    "Article": {
-      "type": "object",
-      "properties": {
-        "title": {
-          "type": "string",
-          "example": "SQL Instructions"
-        },
-        "content": {
-          "type": "string",
-          "example": "select * from table"
-        },
-        "category": {
-          "type": "string",
-          "example": "SQL"
-        },
-        "authorId": {
-          "type": "number",
-          "example": 1
-        },
-        "views": {
-          "type": "number",
-          "example": 2
-        },
-        "isActive": {
-          "type": "boolean",
-          "example": true
-        },
-        "createdAt": {
-          "type": "string",
-          "example": "2023-06-23"
-        },
-        "updatedAt": {
-          "type": "string",
-          "example": "2023-06-24"
+    },
+    "/categories/": {
+      "get": {
+        "tags": [
+          "Categories"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Categories"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "parentId": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/categories/{id}": {
+      "get": {
+        "tags": [
+          "Categories"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Categories"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Categories"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
         }
       }
     }
